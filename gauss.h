@@ -2,6 +2,9 @@
 #define _GAUSS_H
 
 #include "mat_io.h"
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * Zwraca 0 - elimnacja zakonczona sukcesem
