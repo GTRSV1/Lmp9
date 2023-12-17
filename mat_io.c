@@ -6,7 +6,7 @@
  * Zwraca <> NULL - udalo sie wczytac
  * Zwraca == NULL - podczas wczytywania wystapil blad
  */
-Matrix * readFromFile(char * fname) {
+Matrix * readFromFile(char * fname, int mode) {
 				int r,c;
 				int ir, ic;
 				FILE * fin =  fopen(fname,"r");
@@ -14,6 +14,12 @@ Matrix * readFromFile(char * fname) {
 
 				if (fin != NULL) {
 					fscanf(fin,"%d %d",&r,&c);
+					if (mode == 1){
+						if(r != c){
+							printf("Wczytana matryca A wygląda na prostokątną, ma być kwadratowa.\n Sprawdź plik i spróbuj ponownie\n");
+							return NULL;
+						}
+					}
 					mat = createMatrix(r,c);
 					if (mat != NULL) {
 						for (ir = 0; ir < r; ir++) 

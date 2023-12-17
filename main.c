@@ -7,8 +7,8 @@
 
 int main(int argc, char ** argv) {
 	int res;
-	Matrix * A = readFromFile(argv[1]);
-	Matrix * b = readFromFile(argv[2]);
+	Matrix * A = readFromFile(argv[1], 1);
+	Matrix * b = readFromFile(argv[2], 0);
 	Matrix * x;
 
 	if (A == NULL) return -1;
