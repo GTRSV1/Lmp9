@@ -12,23 +12,23 @@ void switchin(int c, Matrix *A, Matrix *b){
 	int najwindex;
 
 	for (int r = c; r < n ; r++){
-		if( fabs(A->data[c][r]) > najw ){
-			najw = fabs(A->data[c][r]);
+		if( fabs(A->data[r][c]) > najw ){
+			najw = fabs(A->data[r][c]);
 			najwindex = r;
 		}
 	}
-
+	
 	if(najw != 0){
 		double temp;
 		int ni = najwindex;
-		for( int r=0; r< n; r++){
-			temp = A->data[c][r];
-			A->data[c][r] = A->data[ni][r];
-			A->data[ni][r] = temp;
+		for( int i=0; i< n; i++){
+			temp = A->data[c][i];
+			A->data[c][i] = A->data[ni][i];
+			A->data[ni][i] = temp;
 		}
-		temp = b->data[0][c];
-		b->data[0][c] = b->data[0][ni];
-		b->data[0][ni] = temp;
+		temp = b->data[c][0];
+		b->data[c][0] = b->data[ni][0];
+		b->data[ni][0] = temp;
 	}
 }
 
@@ -41,11 +41,11 @@ int eliminate(Matrix *A, Matrix *b){
 		for( int r= c+1; r < n; r++ ){
 			if(A->data[c][c] == 0)
 				return 1;	
-			double wsp = A->data[c][r] / A->data[c][c];
+			double wsp = A->data[r][c] / A->data[c][c];
 			for( int i= c; i < n; i++ ){
-				A->data[i][r] -= A->data[i][r] * wsp;
+				A->data[r][i] -= A->data[c][i] * wsp;
 			}
-			b->data[0][r] -= b->data[0][c] * wsp;
+			b->data[r][0] -= b->data[c][0] * wsp;
 		}
 		
 	}

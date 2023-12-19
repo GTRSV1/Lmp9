@@ -16,16 +16,22 @@ int main(int argc, char ** argv) {
 	printToScreen(A);
 	printToScreen(b);
 
+	if( A->r != b->r){
+		fprintf(stderr, "Błąd! Podane macierze nie mają takiej samej liczby wierszy.\n");
+		freeMatrix(A);
+		freeMatrix(b);
+		return 0;
+	}
+
 	res = eliminate(A,b);
 	printToScreen(A);
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
-
 		printToScreen(x);
-	  freeMatrix(x);
+	  	freeMatrix(x);
 	} else {
-					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
+		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}
 
 	freeMatrix(A);

@@ -16,12 +16,12 @@ Matrix * readFromFile(char * fname, int mode) {
 					fscanf(fin,"%d %d",&r,&c);
 					if (mode == 1){
 						if(r != c){
-							printf("Wczytana matryca A wygląda na prostokątną, ma być kwadratowa.\n Sprawdź plik i spróbuj ponownie\n");
+							fprintf(stderr,"Wczytana matryca A wygląda na prostokątną, ma być kwadratowa.\n Sprawdź plik i spróbuj ponownie\n");
 							return NULL;
 						}
 					} else {
 						if(c != 1)
-							printf("Wczytana matryca b wygląda na źle sformatowaną. Powinna mieć 1 kolumnę. Sprawdź plik i spróbuj ponownie\n");
+							fprintf(stderr,"Wczytana matryca b wygląda na źle sformatowaną. Powinna mieć 1 kolumnę. Sprawdź plik i spróbuj ponownie\n");
 					}
 					mat = createMatrix(r,c);
 					if (mat != NULL) {
