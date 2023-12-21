@@ -20,8 +20,10 @@ Matrix * readFromFile(char * fname, int mode) {
 							return NULL;
 						}
 					} else {
-						if(c != 1)
+						if(c != 1){
 							fprintf(stderr,"Wczytana matryca b wygląda na źle sformatowaną. Powinna mieć 1 kolumnę. Sprawdź plik i spróbuj ponownie\n");
+							return NULL;
+						}
 					}
 					mat = createMatrix(r,c);
 					if (mat != NULL) {

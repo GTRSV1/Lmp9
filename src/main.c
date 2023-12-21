@@ -6,7 +6,6 @@
 
 
 int main(int argc, char ** argv) {
-	int res;
 	Matrix * A = readFromFile(argv[1], 1);
 	Matrix * b = readFromFile(argv[2], 0);
 	Matrix * x;
@@ -23,11 +22,11 @@ int main(int argc, char ** argv) {
 		return 0;
 	}
 
-	res = eliminate(A,b);
+	eliminate(A,b);
 	printToScreen(A);
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
-		res = backsubst(x,A,b);
+		backsubst(x,A,b);
 		printToScreen(x);
 	  	freeMatrix(x);
 	} else {
