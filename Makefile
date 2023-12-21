@@ -1,6 +1,6 @@
 all: bin/gauss
 
-.PHONY: all test test1 test2 test3 test4 test5 test6 clean
+.PHONY: all test test1 test2 test3 test4 test5 test6  test7 clean
 
 bin/gauss: $(wildcard src/*.c) | bin
 	gcc -Wall -ggdb --pedantic src/*.c -o bin/gauss
@@ -25,3 +25,5 @@ test5:
 	bin/gauss dane/A dane/bdiag
 test6:
 	bin/gauss dane/A
+test7:
+	bin/gauss dane/Aspr dane/bspr

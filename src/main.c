@@ -12,7 +12,9 @@ int main(int argc, char ** argv) {
 
 	if (A == NULL) return -1;
 	if (b == NULL) return -2;
+	printf("Wczytana macierz A:\n");
 	printToScreen(A);
+	printf("Wczytana macierz b:\n");
 	printToScreen(b);
 
 	if( A->r != b->r){
@@ -23,10 +25,10 @@ int main(int argc, char ** argv) {
 	}
 
 	eliminate(A,b);
-	printToScreen(A);
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		backsubst(x,A,b);
+		printf("Obliczona macierz X:\n");
 		printToScreen(x);
 	  	freeMatrix(x);
 	} else {

@@ -13,10 +13,8 @@ int backsubst(Matrix *x, Matrix *mat, Matrix *b) {
     }
     for (int i = n - 1; i >= 0; i--) {
         if (mat->data[i][i] == 0) {
-        	x->data[i][0] = 0;
-        	//fprintf(stderr, "Błąd: Wystąpiło dzielenie przez zero\n");
-        	//return 1;
-        	//Warunek sprawdzony w części schodkowania, ten warunek sprawdza przypadek całej kolumny zer
+        	fprintf(stderr, "Błąd: Wystąpiło dzielenie przez zero\n");
+        	return 1;
         } else {
 
         	x->data[i][0] = b->data[i][0] / mat->data[i][i];
